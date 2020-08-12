@@ -51,6 +51,7 @@ def get_several_tracks_audio_features(tracks):
 	print(lookup_url)
 	result = requests.get(lookup_url, headers=headers)
 	return result.json()
+
 def make_url(items):
 	"""puts item in a format where they can be looked up. used for tracks or artists"""
 	lookup_url = ''
@@ -67,8 +68,9 @@ def get_recs_based_on_seed(tracks, artists):
 	artists_piece = make_url(artists)
 
 	string = BASE_URL + 'recommendations?seed_artists=' + artists_piece +'&seed_tracks=' + tracks_piece
-
+	print(string)
 	result = requests.get(string, headers=headers)
+
 	result = result.json()
 
 	#prints song and artist 
@@ -77,8 +79,9 @@ def get_recs_based_on_seed(tracks, artists):
 	return None
 
 #get_recs_based_on_seed(['0e4os6wHr1jbFn4yPtSEOe', '2RKY4G4RwRQufxBUv6ect3', '786h4kDeZiX5nYvOwA3wtE', '7utRJ4BeYx85khzP3lKoBX'],['4dpARuHxo51G3z768sgnrY','1HY2Jd0NmPuamShAr6KMms', '6PAt558ZEZl0DmdXlnjMgD'])
-get_recs_based_on_seed(['7utRJ4BeYx85khzP3lKoBX', '786h4kDeZiX5nYvOwA3wtE'],['4dpARuHxo51G3z768sgnrY','1HY2Jd0NmPuamShAr6KMms', '6PAt558ZEZl0DmdXlnjMgD'])
-
+#get_recs_based_on_seed(['7utRJ4BeYx85khzP3lKoBX', '786h4kDeZiX5nYvOwA3wtE'],['4dpARuHxo51G3z768sgnrY','1HY2Jd0NmPuamShAr6KMms', '6PAt558ZEZl0DmdXlnjMgD'])
+get_recs_based_on_seed(['7nBnxipTxl27eJa9ltaikO', '1rfofaqEpACxVEHIZBJe6W'], ['3q7HBObVc0L8jNeTe5Gofh', '7dGJo4pcD2V6oG8kP0tJRR', '2QsynagSdAqZj3U9HgDzjD']) ## dad's
+#get_recs_based_on_seed([''])
 
 def get_artist_name(song_uri):
 	"""gets the artist's name based on song URI"""
